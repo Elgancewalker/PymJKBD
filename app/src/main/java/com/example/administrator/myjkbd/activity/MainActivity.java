@@ -18,22 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     public void test(View view){
-        OkHttpUtils<ExamIfor> utils=new OkHttpUtils<>(getApplicationContext());
-        String uri="http://101.251.196.90:8080/JztkServer/examInfo";
-        utils.url(uri)
-                .targetClass(ExamIfor.class)
-                .execute(new OkHttpUtils.OnCompleteListener<ExamIfor>(){
 
-                    @Override
-                    public void onSuccess(ExamIfor result) {
-                        Log.e("main","result="+result);
-                    }
-
-                    @Override
-                    public void onError(String error) {
-                        Log.e("main","error="+error);
-                    }
-                });
         startActivity(new Intent(MainActivity.this,ExamActivity.class));
     }
 
