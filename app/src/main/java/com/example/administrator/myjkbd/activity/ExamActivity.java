@@ -40,7 +40,7 @@ public class ExamActivity extends AppCompatActivity {
     }
 
     private void initData() {
-       ExamIfor examIfor= ExamApplication.getInstance().getmExamIfor();
+        ExamIfor examIfor= ExamApplication.getInstance().getmExamIfor();
         if(examIfor!=null){
             showData(examIfor);
         }
