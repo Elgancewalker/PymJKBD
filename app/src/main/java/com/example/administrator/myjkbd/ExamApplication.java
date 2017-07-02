@@ -15,15 +15,18 @@ import java.util.List;
 
 public class ExamApplication extends Application {
     ExamIfor mExamIfor;
-    List<ExamQuestion> mmExamIfor;
-    ExamApplication instance;
+    List<ExamQuestion> mExamList;
+    private static ExamApplication instance;
+
     @Override
     public void onCreate() {
         super.onCreate();
         instance=this;
         initData();
     }
-
+    public static ExamApplication getInstance(){
+        return instance;
+    }
     private void initData() {
         OkHttpUtils<ExamIfor> utils=new OkHttpUtils<>(getApplicationContext());
         String uri="http://101.251.196.90:8080/JztkServer/examInfo";
@@ -41,5 +44,11 @@ public class ExamApplication extends Application {
                         Log.e("main","error="+error);
                     }
                 });
+    }
+    public ExamIfor getmExamIfor(){
+        return mExamIfor;
+    }
+    public void setmExamIfor(ExamIfor examIfor){
+        mExamIfor=examIfor;
     }
 }
