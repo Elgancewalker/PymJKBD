@@ -66,7 +66,6 @@ public class ExamApplication extends Application {
                                     }
                                 }
                             }
-
                             @Override
                             public void onError(String error) {
                                 Log.e("main","error="+error);

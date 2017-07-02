@@ -45,8 +45,8 @@
             android:id="@+id/im_exzm_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tool:src="@mipmap/exam_one"
             android:layout_gravity="center_horizontal"/>
+    <!--tool:src="@mipmap/exam_one"-->
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -62,9 +62,8 @@
                 android:id="@+id/tv_op1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tool:text="车道数变少"
                 android:textColor="#000"
-                android:textSize="18sp"/>
+                android:textSize="18sp"/><!-- tool:text="车道数变少"-->
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -81,9 +80,9 @@
                 android:id="@+id/tv_op2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tool:text="合流处"
                 android:textColor="#000"
                 android:textSize="18sp"/>
+            <!--tool:text="合流处"-->
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
@@ -100,28 +99,26 @@
                 android:id="@+id/tv_op3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tool:text="应急车道"
                 android:textColor="#000"
-                android:textSize="18sp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+                android:textSize="18sp"/><!--tool:text="应急车道"-->
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="D."
-                android:textColor="#000"
-                android:textSize="18sp"/>
-            <TextView
-                android:id="@+id/tv_op4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tool:text="向左变道"
-                android:textColor="#000"
-                android:textSize="18sp"/>
+            android:text="D."
+            android:textColor="#000"
+            android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/tv_op4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18sp"/><!--tool:text="向左变道"-->
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"

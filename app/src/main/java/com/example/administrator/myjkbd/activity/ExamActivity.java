@@ -58,6 +58,10 @@ private void showExam(List<ExamQuestion> examList) {
         tvop2.setText(exam.getItem2());
         tvop3.setText(exam.getItem3());
         tvop4.setText(exam.getItem4());
+        Picasso.with(ExamActivity.this)
+                .load(exam.getUrl())
+                .into(mImageView);
+
     }
 }
 
