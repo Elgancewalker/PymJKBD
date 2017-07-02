@@ -48,7 +48,7 @@ public class ExamApplication extends Application {
     public ExamIfor getmExamIfor(){
         return mExamIfor;
     }
-    public void setmExamIfor(ExamIfor examIfor){
-        mExamIfor=examIfor;
+    public void setmExamIfor(ExamIfor examInfo){
+        mExamIfor=examInfo;
     }
 }
