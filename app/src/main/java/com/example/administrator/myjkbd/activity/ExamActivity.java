@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.administrator.myjkbd.ExamApplication;
@@ -33,6 +34,7 @@ public class ExamActivity extends AppCompatActivity {
     IExamBiz biz;
     LinearLayout layoutLoading;
     TextView tvLoad;
+    ProgressBar dialog;
     boolean isLoadExamInfo=false;
     boolean isLoadQuestions=false;
 
@@ -71,6 +73,7 @@ public class ExamActivity extends AppCompatActivity {
     private void initView() {
         layoutLoading=(LinearLayout) findViewById(R.id.layout_loading);
         tvLoad= (TextView) findViewById(R.id.tv_load);
+        dialog= (ProgressBar) findViewById(R.id.pr_load_dialog);
         tvExamInfo=(TextView)findViewById(R.id.tv_examinfo);
         tvExamTitle=(TextView)findViewById(R.id.tv_title);
         tvop1=(TextView)findViewById(R.id.tv_op1);
@@ -94,6 +97,7 @@ public class ExamActivity extends AppCompatActivity {
                     showExam(examList);
                 }
             }else {
+                dialog.setVisibility(View.GONE);
                 tvLoad.setText("下载失败，点击重试");
             }
         }
