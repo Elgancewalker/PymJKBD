@@ -52,6 +52,7 @@ public class ExamActivity extends AppCompatActivity {
         mLoadQuestionBroadcast=new LoadQuestionBroadcast();
         setListener();
         initView();
+        biz=new ExamBiz();
         loadData();
     }
 
@@ -61,7 +62,9 @@ public class ExamActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        biz=new ExamBiz();
+        layoutLoading.setEnabled(false);
+        dialog.setVisibility(View.VISIBLE);
+        tvLoad.setText("下载数据...");
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -81,6 +84,12 @@ public class ExamActivity extends AppCompatActivity {
         tvop3=(TextView)findViewById(R.id.tv_op3);
         tvop4=(TextView)findViewById(R.id.tv_op4);
         mImageView=(ImageView)findViewById(R.id.im_exam_image);
+        layoutLoading.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                loadData();
+            }
+        });
 
     }
 
@@ -97,6 +106,7 @@ public class ExamActivity extends AppCompatActivity {
                     showExam(examList);
                 }
             }else {
+                layoutLoading.setEnabled(true);
                 dialog.setVisibility(View.GONE);
                 tvLoad.setText("下载失败，点击重试");
             }
