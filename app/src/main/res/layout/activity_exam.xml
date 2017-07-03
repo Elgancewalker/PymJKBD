@@ -49,11 +49,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/tv_exam_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1."
                 android:textColor="#000"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:layout_marginLeft="7dp"/>
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
@@ -176,22 +178,27 @@
                 android:drawableLeft="@mipmap/exam_pre32x32"
                 android:background="@null"
                 android:text="上一题"
-                android:layout_alignParentLeft="true"/>
+                android:onClick="preExam"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"/>
             <Button
                 android:id="@+id/btn_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/exam_next32x32"
+                android:drawableRight="@mipmap/exam_next32x32"
                 android:background="@null"
                 android:text="下一题"
-                android:layout_alignParentRight="true"/>
+                android:onClick="nextExam"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btn_next"
-                android:drawableLeft="@mipmap/exam_commit32x32"
+                android:drawableRight="@mipmap/exam_commit32x32"
                 android:background="@null"
                 android:text="交卷"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"/>
         </RelativeLayout>
 </LinearLayout>
