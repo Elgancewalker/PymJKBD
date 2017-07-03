@@ -1,5 +1,6 @@
 package com.example.administrator.myjkbd.dao;
 
+import android.content.Intent;
 import android.util.Log;
 
 import com.example.administrator.myjkbd.ExamApplication;
@@ -27,11 +28,17 @@ public class ExamDao implements IExamDao{
                     public void onSuccess(ExamIfor result) {
                         Log.e("main","result="+result);
                         ExamApplication.getInstance().setmExamIfor(result);
+                        ExamApplication.getInstance()
+                                .sendBroadcast(new Intent(ExamApplication.LOAD_EXAM_INFO)
+                                .putExtra(ExamApplication.LOAD_DATA_SUCCESS,true));
                     }
 
                     @Override
                     public void onError(String error) {
                         Log.e("main","error="+error);
+                        ExamApplication.getInstance()
+                                .sendBroadcast(new Intent(ExamApplication.LOAD_EXAM_INFO)
+                                        .putExtra(ExamApplication.LOAD_DATA_SUCCESS,false));
                     }
                 });
         OkHttpUtils<String>utils1=new OkHttpUtils<String>(ExamApplication.getInstance());
@@ -42,17 +49,25 @@ public class ExamDao implements IExamDao{
 
                     @Override
                     public void onSuccess(String jsonStr) {
+                        boolean success=false;
                         Result result= ResultUtils.getListResultFromJson(jsonStr);
                         if(result!=null&&result.getError_code()==0){
                             List<ExamQuestion> list=result.getResult();
                             if(list!=null&&list.size()>0){
                                 ExamApplication.getInstance().setExamList(list);
+                                success=true;
                             }
                         }
+                        ExamApplication.getInstance()
+                                .sendBroadcast(new Intent(ExamApplication.LOAD_EXAM_QUESTION)
+                                        .putExtra(ExamApplication.LOAD_DATA_SUCCESS,success));
                     }
                     @Override
                     public void onError(String error) {
                         Log.e("main","error="+error);
+                        ExamApplication.getInstance()
+                                .sendBroadcast(new Intent(ExamApplication.LOAD_EXAM_QUESTION)
+                                        .putExtra(ExamApplication.LOAD_DATA_SUCCESS,false));
                     }
                 });
 

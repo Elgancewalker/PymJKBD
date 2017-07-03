@@ -42,7 +42,7 @@
                 android:textSize="18sp"/>
         </LinearLayout>
         <ImageView
-            android:id="@+id/im_exzm_image"
+            android:id="@+id/im_exam_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"/>

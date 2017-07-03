@@ -18,29 +18,22 @@ import java.util.List;
  */
 
 public class ExamApplication extends Application {
+    public static String LOAD_EXAM_INFO="load_exam_info";
+    public static String LOAD_EXAM_QUESTION="load_exam_question";
+    public static String LOAD_DATA_SUCCESS="load_data_success";
     ExamIfor mExamIfor;
     List<ExamQuestion> mExamList;
-    IExamBiz biz;
     private static ExamApplication instance;
 
     @Override
     public void onCreate() {
         super.onCreate();
         instance=this;
-        biz=new ExamBiz();
-        initData();
     }
     public static ExamApplication getInstance(){
         return instance;
     }
-    private void initData() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                biz.beginExam();
-            }
-        }).start();
-    }
+
     public ExamIfor getmExamIfor(){
         return mExamIfor;
     }
