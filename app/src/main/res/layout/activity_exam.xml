@@ -113,6 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp">
             <TextView
+                android:id="@+id/tv_c"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="C."
@@ -131,6 +132,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp">
         <TextView
+            android:id="@+id/tv_d"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="D."
@@ -149,21 +151,25 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp">
             <CheckBox
+                android:id="@+id/cb_01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="A"
                 android:layout_marginLeft="15dp"/>
             <CheckBox
+                android:id="@+id/cb_02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="B"
                 android:layout_marginLeft="15dp"/>
             <CheckBox
+                android:id="@+id/cb_03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="C"
                 android:layout_marginLeft="15dp"/>
             <CheckBox
+                android:id="@+id/cb_04"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="D"

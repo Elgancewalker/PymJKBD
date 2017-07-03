@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -29,7 +30,8 @@ import java.util.List;
  */
 
 public class ExamActivity extends AppCompatActivity {
-    TextView tvExamInfo,tvExamTitle,tvop1,tvop2,tvop3,tvop4,tvLoad,tvNum;
+    TextView tvExamInfo,tvExamTitle,tvop1,tvop2,tvop3,tvop4,tvLoad,tvNum,tvC,tvD;
+    CheckBox cb01,cb02,cb03,cb04;
     ImageView mImageView;
     IExamBiz biz;
     LinearLayout layoutLoading;
@@ -83,6 +85,12 @@ public class ExamActivity extends AppCompatActivity {
         tvop2=(TextView)findViewById(R.id.tv_op2);
         tvop3=(TextView)findViewById(R.id.tv_op3);
         tvop4=(TextView)findViewById(R.id.tv_op4);
+        tvC= (TextView) findViewById(R.id.tv_c);
+        tvD= (TextView) findViewById(R.id.tv_d);
+        cb01= (CheckBox) findViewById(R.id.cb_01);
+        cb02= (CheckBox) findViewById(R.id.cb_02);
+        cb03= (CheckBox) findViewById(R.id.cb_03);
+        cb04= (CheckBox) findViewById(R.id.cb_04);
         mImageView=(ImageView)findViewById(R.id.im_exam_image);
         layoutLoading.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -127,6 +135,22 @@ public class ExamActivity extends AppCompatActivity {
                         .into(mImageView);
             }else {
                 mImageView.setVisibility(View.GONE);
+            }
+
+            if(exam.getItem3().equals("")){
+                tvC.setVisibility(View.GONE);
+                cb03.setVisibility(View.GONE);
+            }else {
+                tvC.setVisibility(View.VISIBLE);
+                cb03.setVisibility(View.VISIBLE);
+            }
+
+            if(exam.getItem4().equals("")){
+                tvD.setVisibility(View.GONE);
+                cb04.setVisibility(View.GONE);
+            }else {
+                tvD.setVisibility(View.VISIBLE);
+                cb04.setVisibility(View.VISIBLE);
             }
 
         }
