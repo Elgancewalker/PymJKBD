@@ -200,6 +200,16 @@ public class ExamActivity extends AppCompatActivity {
         }
     }
 
+    private void saveUserAnswer(){
+
+        for (int i = 0; i < cbs.length; i++) {
+            if(cbs[i].isChecked()){
+                biz.getExam().setAnswer(String.valueOf(i+1));
+                return;
+           }
+        }
+    }
+
     private void showData(ExamIfor examIfo) {
         tvExamInfo.setText(examIfo.toString());
     }
@@ -216,10 +226,12 @@ public class ExamActivity extends AppCompatActivity {
     }
 
     public void preExam(View view) {
+        saveUserAnswer();
         showExam(biz.preQuestion());
     }
 
     public void nextExam(View view) {
+        saveUserAnswer();
         showExam(biz.nextQuestion());
     }
 
