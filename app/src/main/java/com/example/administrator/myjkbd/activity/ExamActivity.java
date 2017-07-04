@@ -191,6 +191,11 @@ public class ExamActivity extends AppCompatActivity {
                 cb04.setVisibility(View.VISIBLE);
             }
             resetOptions();
+            String userAnswer=exam.getUserAnswer();
+            if(userAnswer!=null&&!userAnswer.equals("")){
+                int userCB=Integer.parseInt(userAnswer)-1;
+                cbs[userCB].setChecked(true);
+            }
         }
     }
 
@@ -204,7 +209,7 @@ public class ExamActivity extends AppCompatActivity {
 
         for (int i = 0; i < cbs.length; i++) {
             if(cbs[i].isChecked()){
-                biz.getExam().setAnswer(String.valueOf(i+1));
+                biz.getExam().setUserAnswer(String.valueOf(i+1));
                 return;
            }
         }

@@ -100,4 +100,12 @@ public class ExamQuestion {
     public String getUrl() {
         return url;
     }
+
+    public String getUserAnswer() {
+        return userAnswer;
+    }
+
+    public void setUserAnswer(String userAnswer) {
+        this.userAnswer = userAnswer;
+    }
 }
