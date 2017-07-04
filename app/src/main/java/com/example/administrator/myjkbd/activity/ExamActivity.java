@@ -190,7 +190,13 @@ public class ExamActivity extends AppCompatActivity {
                 tvD.setVisibility(View.VISIBLE);
                 cb04.setVisibility(View.VISIBLE);
             }
+            resetOptions();
+        }
+    }
 
+    private void resetOptions() {
+        for(CheckBox cb:cbs){
+            cb.setChecked(false);
         }
     }
 
