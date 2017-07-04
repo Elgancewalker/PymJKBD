@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -24,12 +25,14 @@ import com.example.administrator.myjkbd.bean.ExamIfor;
 import com.example.administrator.myjkbd.bean.ExamQuestion;
 import com.example.administrator.myjkbd.biz.ExamBiz;
 import com.example.administrator.myjkbd.biz.IExamBiz;
+import com.example.administrator.myjkbd.view.QuestionAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static android.R.attr.fillBefore;
 import static android.R.attr.onClick;
 
 /**
@@ -44,6 +47,7 @@ public class ExamActivity extends AppCompatActivity {
     IExamBiz biz;
     LinearLayout layoutLoading;
     ProgressBar dialog;
+    QuestionAdapter mAdapter;
     boolean isLoadExamInfo=false;
     boolean isLoadQuestions=false;
 
@@ -52,6 +56,7 @@ public class ExamActivity extends AppCompatActivity {
 
     LoadExamBroadcast mLoadExamBroadcast;
     LoadQuestionBroadcast mLoadQuestionBroadcast;
+    Gallery mGallery;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -105,6 +110,7 @@ public class ExamActivity extends AppCompatActivity {
         cbs[3]=cb04;
         tvTime= (TextView) findViewById(R.id.tv_time);
         mImageView=(ImageView)findViewById(R.id.im_exam_image);
+        mGallery= (Gallery) findViewById(R.id.gallery);
         layoutLoading.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -155,6 +161,7 @@ public class ExamActivity extends AppCompatActivity {
                 if (examIfor != null) {
                     showData(examIfor);
                 }
+                initGallery();
                 showExam(biz.getExam());
                 initTimer(examIfor);
             }else {
@@ -163,6 +170,11 @@ public class ExamActivity extends AppCompatActivity {
                 tvLoad.setText("下载失败，点击重试");
             }
         }
+    }
+
+    private void initGallery() {
+        mAdapter=new QuestionAdapter(this);
+        mGallery.setAdapter(mAdapter);
     }
 
     private void initTimer(ExamIfor examIfor) {
