@@ -122,7 +122,6 @@ public class ExamActivity extends AppCompatActivity {
         cb02.setOnCheckedChangeListener(listener);
         cb03.setOnCheckedChangeListener(listener);
         cb04.setOnCheckedChangeListener(listener);
-
     }
     CompoundButton.OnCheckedChangeListener listener=new CompoundButton.OnCheckedChangeListener(){
         @Override
@@ -256,10 +255,17 @@ public class ExamActivity extends AppCompatActivity {
             if(userAnswer!=null&&!userAnswer.equals("")){
                 int userCB=Integer.parseInt(userAnswer)-1;
                 cbs[userCB].setChecked(true);
+                setOptions(false);
+            }else {
+                setOptions(true);
             }
         }
     }
-
+    private void setOptions(boolean hasAnswer){
+        for (CheckBox cb : cbs) {
+            cb.setEnabled(hasAnswer);
+        }
+    }
     private void resetOptions() {
         for(CheckBox cb:cbs){
             cb.setChecked(false);
