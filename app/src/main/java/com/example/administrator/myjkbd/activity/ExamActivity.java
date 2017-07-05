@@ -44,6 +44,7 @@ public class ExamActivity extends AppCompatActivity {
     TextView tvExamInfo,tvExamTitle,tvop1,tvop2,tvop3,tvop4,tvLoad,tvNum,tvC,tvD,tvTime;
     CheckBox cb01,cb02,cb03,cb04;
     CheckBox[]cbs=new CheckBox[4];
+    TextView[] tvOps=new TextView[4];
     ImageView mImageView;
     IExamBiz biz;
     LinearLayout layoutLoading;
@@ -109,6 +110,10 @@ public class ExamActivity extends AppCompatActivity {
         cbs[1]=cb02;
         cbs[2]=cb03;
         cbs[3]=cb04;
+        tvOps[0]=tvop1;
+        tvOps[1]=tvop2;
+        tvOps[2]=tvop3;
+        tvOps[3]=tvop4;
         tvTime= (TextView) findViewById(R.id.tv_time);
         mImageView=(ImageView)findViewById(R.id.im_exam_image);
         mGallery= (Gallery) findViewById(R.id.gallery);
@@ -256,11 +261,43 @@ public class ExamActivity extends AppCompatActivity {
                 int userCB=Integer.parseInt(userAnswer)-1;
                 cbs[userCB].setChecked(true);
                 setOptions(false);
+                setAnswerTextColor(userAnswer,exam.getAnswer());
             }else {
                 setOptions(true);
+                setOptionsColor();
             }
         }
     }
+
+    private void setOptionsColor() {
+        for (TextView tvOp : tvOps) {
+            tvOp.setTextColor(getResources()
+                    .getColor(R.color.black));
+        }
+    }
+
+    private void setAnswerTextColor(String userAnswer, String answer) {
+        int ra=Integer.parseInt(answer);
+        for (int i = 0; i < tvOps.length; i++) {
+            if(i==ra){
+                tvop1.setTextColor(getResources()
+                        .getColor(R.color.green));
+            }else {
+                if(!userAnswer.equals(answer)){
+                    int ua=Integer.parseInt(userAnswer)-1;
+                    if(i==ua) {
+                        tvOps[i].setTextColor(getResources()
+                                .getColor(R.color.red));
+                    }else {
+                        tvOps[i].setTextColor(getResources()
+                                .getColor(R.color.black));
+                    }
+                }
+            }
+        }
+    }
+
+
     private void setOptions(boolean hasAnswer){
         for (CheckBox cb : cbs) {
             cb.setEnabled(hasAnswer);
