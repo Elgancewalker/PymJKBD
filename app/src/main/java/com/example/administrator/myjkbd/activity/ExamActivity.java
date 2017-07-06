@@ -277,10 +277,10 @@ public class ExamActivity extends AppCompatActivity {
     }
 
     private void setAnswerTextColor(String userAnswer, String answer) {
-        int ra=Integer.parseInt(answer);
+        int ra=Integer.parseInt(answer)-1;
         for (int i = 0; i < tvOps.length; i++) {
             if(i==ra){
-                tvop1.setTextColor(getResources()
+                tvOps[i].setTextColor(getResources()
                         .getColor(R.color.green));
             }else {
                 if(!userAnswer.equals(answer)){
