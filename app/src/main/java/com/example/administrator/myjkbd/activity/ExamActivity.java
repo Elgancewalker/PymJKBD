@@ -313,6 +313,7 @@ public class ExamActivity extends AppCompatActivity {
         for (int i = 0; i < cbs.length; i++) {
             if(cbs[i].isChecked()){
                 biz.getExam().setUserAnswer(String.valueOf(i+1));
+                setOptions(true);
                 mAdapter.notifyDataSetChanged();
                 return;
            }
@@ -347,6 +348,20 @@ public class ExamActivity extends AppCompatActivity {
     }
 
     public void commit(View view) {
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("交卷")
+                .setMessage("你还有剩余时间，确认胶卷么？")
+                .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        commit();
+                    }
+                })
+                .setNegativeButton("取消", null);
+        builder.create().show();
+    }
+
+    public void commit() {
         saveUserAnswer();
         int s=biz.commitExam();
         View inflate=View.inflate(this,R.layout.layout_result,null);
@@ -362,7 +377,7 @@ public class ExamActivity extends AppCompatActivity {
                         finish();
                     }
                 });
-
+        builder.setCancelable(false);
         builder.create().show();
     }
 
